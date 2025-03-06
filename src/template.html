@@ -7,6 +7,7 @@
   </head>
   <body>
     <div class="weather-app-container">
+      <!-- Search body -->
       <div class="search">
         <input
           type="text"
@@ -18,7 +19,22 @@
           <!-- url: https://www.svgrepo.com/svg/532551/search-alt-1 -->
         </button>
       </div>
+      <!-- Configuration buttons-->
+      <div class="config-options">
+        <button class="unit-type">C / F</button>
+        <button class="time-boundary">Day / Week</button>
+      </div>
+
+      <!-- Display body -->
       <div class="display"></div>
     </div>
+
+    <template id="data-card-template">
+      <div class="data-card">
+        <p class="data-card-date"></p>
+        <img class="data-card-icon" alt="Weather icon" class="data-card-icon" />
+        <p class="data-card-weather"></p>
+      </div>
+    </template>
   </body>
 </html>

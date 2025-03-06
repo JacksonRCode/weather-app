@@ -1,4 +1,6 @@
-const getData = async (key, days) => {
+import cloudySun from "../images/weather-cloudy-sun.svg";
+
+export default async function (key, days, location) {
   /*
     Gets weather data from [day1] - [day2]
     Day format = [yyyy-mm-dd]
@@ -9,20 +11,19 @@ const getData = async (key, days) => {
   date1 = date1.toISOString().split("T")[0];
   date2 = date2.toISOString().split("T")[0];
 
-  console.log(date1);
-  console.log(date2);
-  const location = "london";
-  const response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date1}/${date2}?key=${key}`,
-    {
-      mode: "cors",
-    }
-  );
-  const responseValue = await response.json();
-  console.log(responseValue);
-  responseValue.days.forEach((day) => {
-    console.log(day.feelslike);
-  });
-};
+  try {
+    const response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date1}/${date2}?key=${key}`,
+      {
+        mode: "cors",
+      }
+    );
 
-getData("9GPBQK2CV486M6C8HHFL83FLC", 6);
+    const responseValue = await response.json();
+
+    return responseValue.days;
+  } catch (error) {
+    alert("BAD REQUEST --> CHECK CITY NAME");
+    return 0;
+  }
+}
