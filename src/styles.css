@@ -14,7 +14,7 @@ body {
 div.weather-app-container {
   width: 60%;
   min-width: 400px;
-  /* max-width: 800px; */
+  max-width: 902px;
   height: 75%;
   /* min-height: 600px; */
 
@@ -36,6 +36,10 @@ div.weather-app-container {
 div.search {
   display: flex;
   gap: 8px;
+
+  width: 350px;
+  margin: 0px auto;
+  align-self: stretch;
 }
 
 input.search-bar {
@@ -47,6 +51,10 @@ input.search-bar {
   border: 1px solid white;
 }
 
+input.search-bar:hover {
+  opacity: 0.9;
+}
+
 input.search-bar:focus {
   background-color: whitesmoke;
   outline: 1px solid black;
@@ -55,11 +63,7 @@ input.search-bar:focus {
 button.search-img-button {
   background: transparent;
   border: none;
-  /* outline: none; */
-  /* width: 36px;
-  height: 36px; */
   padding: 0px 4px;
-  /* padding-inline: 0px; */
   margin: 0px;
 
   transition: all ease-in-out 0.5s;
@@ -102,9 +106,57 @@ button.search-img-button:active {
 
   border-radius: 8px;
   border: 3px solid white;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0, 140, 255),
+    rgb(238, 238, 219)
+  );
 }
 
 .data-card-icon {
   width: 48px;
   height: 48px;
+}
+
+.config-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.unit-type {
+  cursor: pointer;
+  height: 36px;
+  width: 80px;
+  border-radius: 8px;
+
+  background-color: white;
+  outline: 0px solid white;
+  border: 0px solid white;
+  font-weight: bold;
+
+  transition: all ease-in-out 0.1s;
+}
+
+.unit-type:hover {
+  opacity: 0.9;
+}
+
+.unit-type:active {
+  transform: scale(0.99);
+}
+
+.f {
+  color: salmon;
+}
+
+.c {
+  color: rgb(0, 140, 255);
+}
+
+.city-name {
+  font-size: 20px;
+  font-weight: bold;
 }

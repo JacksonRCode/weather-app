@@ -22,16 +22,16 @@ export default async function initListeners(KEY) {
   });
   const tempBtn = document.querySelector(".unit-type");
   tempBtn.addEventListener("click", () => {
-    if (tempBtn.classList.contains("f")) {
+    if (tempBtn.classList.contains("c")) {
       if (days) {
         displayWeather(days, "F");
       }
-      tempBtn.classList = ".unit-type c";
+      tempBtn.classList = "unit-type f";
     } else {
       if (days) {
         displayWeather(days, "C");
       }
-      tempBtn.classList = ".unit-type f";
+      tempBtn.classList = "unit-type c";
     }
   });
 

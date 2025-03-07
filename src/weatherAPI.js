@@ -21,6 +21,18 @@ export default async function (key, days, location) {
 
     const responseValue = await response.json();
 
+    const inpt = document.querySelector(".search-bar");
+    let city = inpt.value;
+    inpt.value = "";
+
+    // CAPS LOCK BABY
+    let firstLetter = city.charAt(0);
+    firstLetter = firstLetter.toUpperCase();
+    city = city.slice(1).toLowerCase();
+    city = firstLetter + city;
+
+    document.querySelector(".city-name").textContent = city;
+
     return responseValue.days;
   } catch (error) {
     alert("BAD REQUEST --> CHECK CITY NAME");
