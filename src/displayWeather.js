@@ -1,6 +1,6 @@
 import cloudySun from "../images/weather-cloudy-sun.svg";
 
-export default function displayWeather(week) {
+export default function displayWeather(week, temp) {
   // feelslike gets the weather
   // datetime gets date
   // conditions gets conditions
@@ -20,7 +20,14 @@ export default function displayWeather(week) {
 
     const tempClone = template.content.cloneNode(true);
     tempClone.querySelector(".data-card-date").textContent = day.datetime;
-    tempClone.querySelector(".data-card-weather").textContent = day.feelslike;
+    let todayFeelsLike = day.feelslike;
+    if (temp === "C") {
+      todayFeelsLike = ((todayFeelsLike - 32) * (5 / 9)).toFixed(1) + " °C";
+    } else {
+      todayFeelsLike = todayFeelsLike + " °F";
+    }
+    tempClone.querySelector(".data-card-weather").textContent = todayFeelsLike;
+    //
     tempClone.querySelector(".data-card-icon").src = cloudySun;
 
     displayBody.appendChild(tempClone);

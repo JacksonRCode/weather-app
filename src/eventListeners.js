@@ -1,5 +1,6 @@
 import getData from "./weatherAPI";
 import displayWeather from "./displayWeather";
+let days = null;
 
 export default async function initListeners(KEY) {
   document.querySelector(".search-img-button").addEventListener("click", () => {
@@ -13,9 +14,28 @@ export default async function initListeners(KEY) {
       if (!value) {
         return;
       }
-      displayWeather(value);
+      days = value;
+      displayWeather(value, "C");
     });
 
     // displayWeather(week);
   });
+  const tempBtn = document.querySelector(".unit-type");
+  tempBtn.addEventListener("click", () => {
+    if (tempBtn.classList.contains("f")) {
+      if (days) {
+        displayWeather(days, "F");
+      }
+      tempBtn.classList = ".unit-type c";
+    } else {
+      if (days) {
+        displayWeather(days, "C");
+      }
+      tempBtn.classList = ".unit-type f";
+    }
+  });
+
+  // document.querySelector(".time-boundary").addEventListener("click", () => {
+  //   alert("Switch day / week");
+  // });
 }
